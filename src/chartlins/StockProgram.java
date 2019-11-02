@@ -1,8 +1,10 @@
 package chartlins;
 
 public class StockProgram {
-    public static void main(String[] args){
+    public static void main(String[] args) throws Exception {
         System.out.println("This is the beginning of the program");
+
+        Inventory.parseFile();
 
         //Question 1
 
