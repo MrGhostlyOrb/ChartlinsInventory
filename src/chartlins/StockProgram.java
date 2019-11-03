@@ -1,10 +1,25 @@
 package chartlins;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class StockProgram {
     public static void main(String[] args) throws Exception {
         System.out.println("This is the beginning of the program");
 
-        Inventory.parseFile();
+        System.out.println("Will now parse inventory.txt to update stock list and store items in array");
+
+        String[] itemArray;
+
+        itemArray = Inventory.parseFile();
+
+        System.out.println(Arrays.toString(itemArray));
+
+        System.out.println("Will now send array to StockItem.java to be sorted by price");
+
+        //StockItem.sortPriceHigh(itemArray);
+
 
         //Question 1
 

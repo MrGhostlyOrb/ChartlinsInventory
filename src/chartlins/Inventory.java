@@ -1,11 +1,13 @@
 package chartlins;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 class Inventory {
-    static void parseFile() throws Exception{
+    static String[] parseFile() throws Exception{
 
         //This method will be used to parse inventory.txt
 
@@ -19,23 +21,28 @@ class Inventory {
 
         //Loop through every line of the file to extract the information
 
-        int arrayCount = 0;
 
+        int count = 0;
         while(scanner.hasNextLine()){
             String line = scanner.nextLine();
-            System.out.println(line);
+            //System.out.println(line);
+            count = count + 1;
 
-            arrayCount = arrayCount + 1;
-            System.out.println(arrayCount);
-
-            //Run split method to start processing the data
-            //TODO Put this in StockProgram.java and create a return method for this
-            Inventory.split(line);
         }
+        int count2 = 0;
+        String[] lineArray = new String[count + 1];
+        String[] lineInfo = new String[1];
+        Scanner scanner2 = new Scanner(file);
+        while(scanner2.hasNextLine()){
+            String line = scanner2.nextLine();
+            count2 = count2 + 1;
+            lineInfo[0] = line;
+            String lineInfos;
+            lineInfos = Arrays.toString(lineInfo);
+            lineArray[count2] = lineInfos;
 
-        //arrayCount is now = to the amount of elements in the file
-
-
+        }
+        return(lineArray);
     }
     private static void split(String textLine){
 
