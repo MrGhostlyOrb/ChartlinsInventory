@@ -19,16 +19,23 @@ class Inventory {
 
         Scanner scanner = new Scanner(file);
 
-        //Loop through every line of the file to extract the information
-
+        //Loop through every line of the file to check how many entries there are
 
         int count = 0;
+
         while(scanner.hasNextLine()){
+
             String line = scanner.nextLine();
+
+            //TODO remove line variable
+
             //System.out.println(line);
             count = count + 1;
 
         }
+
+        //Loop through file a second time in order to extract the information into an array
+
         int count2 = 0;
         String[] lineArray = new String[count + 1];
         String[] lineInfo = new String[1];
@@ -41,25 +48,11 @@ class Inventory {
             lineInfos = Arrays.toString(lineInfo);
             lineArray[count2] = lineInfos;
 
+
         }
+
+        //Return array of information
+
         return(lineArray);
-    }
-    private static void split(String textLine){
-
-        //This method is used to split up each line that is currently a string and cast each piece of information to an array
-
-        System.out.println(textLine);
-        String[] array;
-        array = textLine.split(",");
-
-        //array[0] is the name of the product
-        //array[1] is the product code
-        //array[2] is the quantity of product in stock
-        //array[3] is price of the product in pence
-        //array[4] is extra information
-
-        //TODO create methods for each of these to extract a list of just that data which can then be sorted
-        //Data will then be sent to StockItem.java to be sorted
-        System.out.println(Arrays.toString(array));
     }
 }
