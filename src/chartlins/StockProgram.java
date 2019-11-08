@@ -12,6 +12,10 @@ public class StockProgram {
 
         String[] itemArray;
 
+
+
+
+
         itemArray = Inventory.parseFile();
 
         System.out.println(Arrays.toString(itemArray));
