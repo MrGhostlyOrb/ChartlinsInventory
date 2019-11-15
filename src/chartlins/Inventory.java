@@ -6,49 +6,30 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-class Inventory {
-    static String[] parseFile() throws Exception{
+public class Inventory {
 
-        File file = new File("inventory.txt");
+    private ArrayList<StockItem> invStock;
 
-        //Create a new scanner to parse the file
+    public Inventory(){
 
-        Scanner scanner = new Scanner(file);
+        ArrayList<StockItem> invStock = new ArrayList<StockItem>();
 
-        //Loop through every line of the file to check how many entries there are
-
-        int count = 0;
-
-        while(scanner.hasNextLine()){
-
-            String line = scanner.nextLine();
-
-            //TODO remove line variable
-
-            //System.out.println(line);
-            count = count + 1;
-
-        }
-
-        //Loop through file a second time in order to extract the information into an array
-
-        int count2 = 0;
-        String[] lineArray = new String[count + 1];
-        String[] lineInfo = new String[1];
-        Scanner scanner2 = new Scanner(file);
-        while(scanner2.hasNextLine()){
-            String line = scanner2.nextLine();
-            count2 = count2 + 1;
-            lineInfo[0] = line;
-            String lineInfos;
-            lineInfos = Arrays.toString(lineInfo);
-            lineArray[count2] = lineInfos;
-
-
-        }
-
-        //Return array of information
-
-        return(lineArray);
     }
+
+    public void addItem(StockItem newItem){
+
+        invStock.add(newItem);
+
+    }
+
+    //Create methods to parse the Inventory of the items here
+
+    public int numberOfItems(){
+
+        int stockSize = invStock.size();
+
+        return stockSize;
+
+    }
+
 }

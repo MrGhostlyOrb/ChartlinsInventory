@@ -6,25 +6,8 @@ import java.util.List;
 
 public class StockProgram {
     public static void main(String[] args) throws Exception {
-        System.out.println("This is the beginning of the program");
 
-        System.out.println("Will now parse inventory.txt to update stock list and store items in array");
-
-        String[] itemArray;
-
-
-
-
-
-        itemArray = Inventory.parseFile();
-
-        System.out.println(Arrays.toString(itemArray));
-
-        System.out.println("Will now send array to StockItem.java to be sorted by price");
-
-
-        StockItem.sortPriceHigh(itemArray);
-
+        //Use this class to retrieve the stock data from the inventory.txt file
 
         //Question 1
 
