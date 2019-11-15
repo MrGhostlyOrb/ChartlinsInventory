@@ -9,11 +9,7 @@ import java.util.Scanner;
 class Inventory {
     static String[] parseFile() throws Exception{
 
-        //This method will be used to parse inventory.txt
-
-        //Create a new file to reference inventory.txt
-
-        File file = new File("/home/ben/Desktop/Projects/ChartlinsInventory/inventory.txt");
+        File file = new File("inventory.txt");
 
         //Create a new scanner to parse the file
 
