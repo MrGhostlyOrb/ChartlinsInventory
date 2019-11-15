@@ -13,7 +13,7 @@ public class StockItem {
     private int price;
     private String sp;
 
-    //Construct a Item object
+    //Constructor class to create item object
 
     public StockItem(String productName, String productCode, int quantity, int itemPrice, String special){
 
