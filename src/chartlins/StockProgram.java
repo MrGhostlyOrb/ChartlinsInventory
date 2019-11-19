@@ -7,6 +7,8 @@ import java.util.List;
 public class StockProgram {
     public static void main(String[] args) throws Exception {
 
+        Inventory.parseFile();
+
         //Use this class to retrieve the stock data from the inventory.txt file
 
         //Question 1
