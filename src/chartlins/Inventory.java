@@ -33,13 +33,34 @@ public class Inventory {
         while(scanner.hasNextLine()){
             String line = scanner.nextLine();
 
-            String[] lineInfo = new String[5];
+            ArrayList lineInfo = new ArrayList(Arrays.asList(line.split(",")))
 
-            lineInfo = line.split(",");
+            System.out.println(lineInfo);
 
-            System.out.println(Arrays.toString(lineInfo));
+            if(lineInfo.size() < 5){
+                System.out.println("Hey");
 
 
+
+            }
+
+            //Convert Strings to ints for constructor and remove space
+
+            String newLineInfo2 = (String) lineInfo.get(2);
+
+            String newLineInfo2Sub = newLineInfo2.substring(1);
+
+            int newLineInfo2Int = Integer.parseInt(newLineInfo2Sub);
+
+            String newLineInfo3 = (String) lineInfo.get(3);
+
+            String newLineInfo3Sub = newLineInfo3.substring(1);
+
+            int newLineInfo3Int = Integer.parseInt(newLineInfo3Sub);
+
+            //Construct new object
+
+            StockItem stockItem = new StockItem(Arrays.toString(lineInfo.get(0)), lineInfo.get(1), newLineInfo2Int, newLineInfo3Int, lineInfo.get(4));
         }
     }
 
