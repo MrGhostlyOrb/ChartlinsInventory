@@ -46,9 +46,14 @@ public class StockProgram {
     }
 
     public static void parseFile() throws FileNotFoundException {
+
+        //Method for parsing inventory.txt and retrieving the data in an and adding all items to the inventory
+
         File file = new File("inventory.txt");
 
         Scanner scanner = new Scanner(file);
+
+        //Check for next line in inventory.txt
 
         while(scanner.hasNextLine()){
             String line = scanner.nextLine();
@@ -59,6 +64,8 @@ public class StockProgram {
 
             System.out.println(lineInfo.get(3));
 
+            //Check to see if line has a minimum of 5 elements
+
             if(lineInfo.size() < 5){
 
 
@@ -67,22 +74,23 @@ public class StockProgram {
             }
 
 
+            //Assign elements of line to variables
+
             String name = (String) lineInfo.get(0);
             String code = (String) lineInfo.get(1);
             String qty = (String) lineInfo.get(2);
             String price = (String) lineInfo.get(3);
             String sp = (String) lineInfo.get(4);
 
-
             //Construct new object
-
-
 
             System.out.println("Creating new stockItem object");
 
             StockItem stockItem = new StockItem(name, code, qty, price, sp);
 
             System.out.println("Adding new Item to inventory");
+
+            //Add item to inventory
 
             Inventory.addItem(stockItem);
 
