@@ -12,6 +12,8 @@ public class StockProgram {
 
         System.out.println("Parsing inventory.txt to create Inventory");
 
+
+
         parseFile();
 
         //Use this class to retrieve the stock data from the inventory.txt file
@@ -82,17 +84,22 @@ public class StockProgram {
             String price = (String) lineInfo.get(3);
             String sp = (String) lineInfo.get(4);
 
+            System.out.println(lineInfo.get(0));
+
             //Construct new object
 
             System.out.println("Creating new stockItem object");
 
             StockItem stockItem = new StockItem(name, code, qty, price, sp);
 
+            System.out.println(stockItem);
+
             System.out.println("Adding new Item to inventory");
 
+            Inventory inv = new Inventory();
             //Add item to inventory
 
-            Inventory.addItem(stockItem);
+            inv.addItem(stockItem);
 
             System.out.println("Item Added to inventory:");
 

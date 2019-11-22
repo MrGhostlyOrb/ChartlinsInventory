@@ -1,6 +1,7 @@
 package chartlins;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Inventory {
 
@@ -22,12 +23,17 @@ public class Inventory {
 
         System.out.println(newItem);
 
+
         //TODO fix this
 
         invStock.add(newItem);
 
         //Collections.sort()
 
+    }
+
+    public static void setInvStock(ArrayList<StockItem> invStock) {
+        Inventory.invStock = invStock;
     }
 
     public int numberOfItems(){
