@@ -7,15 +7,14 @@ public class Inventory {
 
     //ArrayList for storing the entire inventory
 
-    private static ArrayList<StockItem> invStock;
+    private ArrayList<StockItem> invStock;
 
     public Inventory(){
-
-        ArrayList<StockItem> invStock = new ArrayList<StockItem>();
+        invStock = new ArrayList<StockItem>();
 
     }
 
-    public static void addItem(StockItem newItem){
+    public void addItem(StockItem newItem){
 
         //Method for adding an Item to the inventory
 
@@ -32,8 +31,8 @@ public class Inventory {
 
     }
 
-    public static void setInvStock(ArrayList<StockItem> invStock) {
-        Inventory.invStock = invStock;
+    public void setInvStock(ArrayList<StockItem> invStock) {
+        this.invStock = invStock;
     }
 
     public int numberOfItems(){
