@@ -1,11 +1,6 @@
 package chartlins;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
 
 public class Inventory {
 
@@ -46,18 +41,18 @@ public class Inventory {
         return stockSize;
 
     }
-    public ArrayList<StockItem> sortPriceHigh(){
+    //public static ArrayList<StockItem> sortPriceHigh(){
 
         //Method for sorting the prices of the inventory by the highest price
 
-        ArrayList<StockItem> stock = Inventory.invStock;
+        //ArrayList<StockItem> stock = Inventory.invStock;
 
         //TODO Google how to sort this
 
-        sortedStock = stock.sort();
+        //sortedStock = stock.sort();
 
-        return sortedStock;
+        //return sortedStock;
 
-    }
+    //}
 
 }

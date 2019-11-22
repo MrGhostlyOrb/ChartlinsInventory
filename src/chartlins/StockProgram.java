@@ -20,15 +20,15 @@ public class StockProgram {
 
         // Print a list of the inventory, sorted in order of increasing price.
 
-        Inventory.sortPriceHigh();
+        //Inventory.sortPriceHigh();
 
         //Question 2
 
         // What is the component with the largest number of components in stock
 
-        ArrayList<StockItem> largestQty = Inventory.sortQty();
+        //ArrayList<StockItem> largestQty = Inventory.sortQty();
 
-        itemQty = largetQty[0];
+        //itemQty = largetQty[0];
 
         //Question 3
 
@@ -42,7 +42,7 @@ public class StockProgram {
 
         // How many stock items have unit prices above 10p?
 
-        Inventory.sortPrice(10);
+        //Inventory.sortPrice(10);
     }
 
     public static void parseFile() throws FileNotFoundException {
