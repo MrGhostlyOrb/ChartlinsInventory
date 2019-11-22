@@ -12,9 +12,9 @@ public class StockProgram {
 
         System.out.println("Parsing inventory.txt to create Inventory");
 
+        Inventory inv = new Inventory();
 
-
-        parseFile();
+        parseFile(inv);
 
         //Use this class to retrieve the stock data from the inventory.txt file
 
@@ -22,7 +22,7 @@ public class StockProgram {
 
         // Print a list of the inventory, sorted in order of increasing price.
 
-        //Inventory.sortPriceHigh();
+        inv.sortPriceHigh();
 
         //Question 2
 
@@ -47,7 +47,7 @@ public class StockProgram {
         //Inventory.sortPrice(10);
     }
 
-    public static void parseFile() throws FileNotFoundException {
+    public static void parseFile(Inventory inv) throws FileNotFoundException {
 
         //Method for parsing inventory.txt and retrieving the data in an and adding all items to the inventory
 
@@ -78,13 +78,16 @@ public class StockProgram {
 
             //Assign elements of line to variables
 
+            //Product Name [0]
             String name = (String) lineInfo.get(0);
+            //Product Code [1]
             String code = (String) lineInfo.get(1);
+            //Product Quantity [2]
             String qty = (String) lineInfo.get(2);
+            //Product Price [3]
             String price = (String) lineInfo.get(3);
+            //Product Special Value [4]
             String sp = (String) lineInfo.get(4);
-
-            System.out.println(lineInfo.get(0));
 
             //Construct new object
 
@@ -92,18 +95,11 @@ public class StockProgram {
 
             StockItem stockItem = new StockItem(name, code, qty, price, sp);
 
-            System.out.println(stockItem);
-
             System.out.println("Adding new Item to inventory");
 
-            Inventory inv = new Inventory();
             //Add item to inventory
 
             inv.addItem(stockItem);
-
-            System.out.println("Item Added to inventory:");
-
-            System.out.println(stockItem);
         }
     }
 

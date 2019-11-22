@@ -1,7 +1,7 @@
 package chartlins;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashMap;
 
 public class Inventory {
 
@@ -19,11 +19,6 @@ public class Inventory {
         //Method for adding an Item to the inventory
 
         System.out.println("Adding New Item");
-
-        System.out.println(newItem);
-
-
-        //TODO fix this
 
         invStock.add(newItem);
 
@@ -46,18 +41,30 @@ public class Inventory {
         return stockSize;
 
     }
-    //public static ArrayList<StockItem> sortPriceHigh(){
+    public void sortPriceHigh(){
 
         //Method for sorting the prices of the inventory by the highest price
 
-        //ArrayList<StockItem> stock = Inventory.invStock;
+        System.out.println(invStock.get(1));
 
-        //TODO Google how to sort this
+        for(int i = 0; i < invStock.size(); i++){
+            StockItem item = invStock.get(i);
 
-        //sortedStock = stock.sort();
+            HashMap happy = new HashMap();
 
-        //return sortedStock;
+            happy.put(item.getProduct(),item.getPrice());
 
-    //}
+            System.out.println(happy);
+        }
+
+
+
+        //happy.put(invStock.get(StockItem.getProduct()), invStock.get(2));
+
+        //ArrayList<StockItem> stock = invStock;
+
+        //ArrayList<StockItem> sortedStock = stock.sort();
+
+    }
 
 }
