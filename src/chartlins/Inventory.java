@@ -1,7 +1,6 @@
 package chartlins;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 
 public class Inventory {
 
@@ -50,11 +49,38 @@ public class Inventory {
         for(int i = 0; i < invStock.size(); i++){
             StockItem item = invStock.get(i);
 
-            HashMap happy = new HashMap();
+            Map<Integer, String> happy = new HashMap();
 
-            happy.put(item.getProduct(),item.getPrice());
+            //Turn price into int
 
-            System.out.println(happy);
+            String strItem = item.getPrice();
+
+            String trimStrItem = strItem.substring(1);
+
+            int intItem = Integer.parseInt(trimStrItem);
+
+            happy.put(intItem,item.getProduct());
+
+            List<Integer> list = new ArrayList(happy.keySet());
+
+            Collections.sort(list, new Comparator<Integer>(){
+
+                @Override
+
+                public int compare(Integer o1, Integer o2){
+                    return o2 - o1;
+                }
+
+
+            });
+
+            Map<Integer, String> sortedMap = new LinkedHashMap<>();
+            for(Integer keys : list){
+                sortedMap.put(keys, (String) happy.get(keys));
+            }
+
+            System.out.println(sortedMap);
+
         }
 
 
