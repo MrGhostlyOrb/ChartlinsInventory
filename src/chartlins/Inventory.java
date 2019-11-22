@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class Inventory {
 
-    private ArrayList<StockItem> invStock;
+    private static ArrayList<StockItem> invStock;
 
     public Inventory(){
 
@@ -17,58 +17,38 @@ public class Inventory {
 
     }
 
-    public void addItem(StockItem newItem){
+    public static void addItem(StockItem newItem){
+
+        System.out.println("Adding New Item");
+
+        System.out.println(newItem);
 
         invStock.add(newItem);
+
+        //Collections.sort()
 
     }
 
     //Create methods to parse the Inventory of the items here
 
-    public static void parseFile() throws FileNotFoundException {
-        File file = new File("inventory.txt");
 
-        Scanner scanner = new Scanner(file);
-
-        while(scanner.hasNextLine()){
-            String line = scanner.nextLine();
-
-            ArrayList lineInfo = new ArrayList(Arrays.asList(line.split(",")))
-
-            System.out.println(lineInfo);
-
-            if(lineInfo.size() < 5){
-                System.out.println("Hey");
-
-
-
-            }
-
-            //Convert Strings to ints for constructor and remove space
-
-            String newLineInfo2 = (String) lineInfo.get(2);
-
-            String newLineInfo2Sub = newLineInfo2.substring(1);
-
-            int newLineInfo2Int = Integer.parseInt(newLineInfo2Sub);
-
-            String newLineInfo3 = (String) lineInfo.get(3);
-
-            String newLineInfo3Sub = newLineInfo3.substring(1);
-
-            int newLineInfo3Int = Integer.parseInt(newLineInfo3Sub);
-
-            //Construct new object
-
-            StockItem stockItem = new StockItem(Arrays.toString(lineInfo.get(0)), lineInfo.get(1), newLineInfo2Int, newLineInfo3Int, lineInfo.get(4));
-        }
-    }
 
     public int numberOfItems(){
+
+        System.out.println("Checking Size of Inventory");
 
         int stockSize = invStock.size();
 
         return stockSize;
+
+    }
+    public ArrayList<StockItem> sortPriceHigh(){
+
+        ArrayList<StockItem> stock = Inventory.invStock;
+
+        sortedStock = stock.sort();
+
+        return sortedStock;
 
     }
 

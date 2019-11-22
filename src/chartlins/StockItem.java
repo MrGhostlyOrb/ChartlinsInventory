@@ -9,13 +9,13 @@ public class StockItem {
 
     private String product;
     private String code;
-    private int qty;
-    private int price;
+    private String qty;
+    private String price;
     private String sp;
 
     //Constructor class to create item object
 
-    public StockItem(String productName, String productCode, int quantity, int itemPrice, String special){
+    public StockItem(String productName, String productCode, String quantity, String itemPrice, String special){
 
         product = productName;
         code = productCode;
@@ -33,10 +33,10 @@ public class StockItem {
     public String getCode(){
         return code;
     }
-    public int getQty(){
+    public String getQty(){
         return qty;
     }
-    public int getPrice(){
+    public String getPrice(){
         return price;
     }
     public String getSpecial(){
