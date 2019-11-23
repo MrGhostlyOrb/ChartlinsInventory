@@ -1,6 +1,9 @@
 package chartlins;
 
 import java.util.*;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.stream.Collectors;
 
 public class Inventory {
 
@@ -44,12 +47,12 @@ public class Inventory {
 
         //Method for sorting the prices of the inventory by the highest price
 
-        System.out.println(invStock.get(1));
+        Map<String, Integer> happy = new HashMap();
+
+        System.out.println(invStock.size());
 
         for(int i = 0; i < invStock.size(); i++){
             StockItem item = invStock.get(i);
-
-            Map<Integer, String> happy = new HashMap();
 
             //Turn price into int
 
@@ -59,31 +62,24 @@ public class Inventory {
 
             int intItem = Integer.parseInt(trimStrItem);
 
-            happy.put(intItem,item.getProduct());
+            System.out.println(item.getCode());
 
-            List<Integer> list = new ArrayList(happy.keySet());
+            System.out.println(intItem);
 
-            Collections.sort(list, new Comparator<Integer>(){
+            //Added product name and price to hashmap to be sorted
 
-                @Override
+            happy.put(item.getCode(),intItem);
 
-                public int compare(Integer o1, Integer o2){
-                    return o2 - o1;
-                }
-
-
-            });
-
-            Map<Integer, String> sortedMap = new LinkedHashMap<>();
-            for(Integer keys : list){
-                sortedMap.put(keys, (String) happy.get(keys));
-            }
-
-            System.out.println(sortedMap);
+            System.out.println(happy);
 
         }
 
+        Map<String, Integer> sorted = happy.entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByValue())
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
 
+        System.out.println(sorted);
 
         //happy.put(invStock.get(StockItem.getProduct()), invStock.get(2));
 
