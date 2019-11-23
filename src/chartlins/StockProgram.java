@@ -2,10 +2,7 @@ package chartlins;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class StockProgram {
     public static void main(String[] args) throws Exception {
@@ -16,21 +13,32 @@ public class StockProgram {
 
         parseFile(inv);
 
-        //Use this class to retrieve the stock data from the inventory.txt file
-
         //Question 1
 
         // Print a list of the inventory, sorted in order of increasing price.
 
+        Map<String, Integer> sortedMap = new HashMap();
+
         sortedMap = inv.sortPriceHigh();
+
+        for(Map.Entry<String, Integer> entry : sortedMap.entrySet()){
+            System.out.println("Product Code : " + entry.getKey() + ", Price in pence : " + entry.getValue());
+        }
 
         //Question 2
 
         // What is the component with the largest number of components in stock
 
-        //ArrayList<StockItem> largestQty = Inventory.sortQty();
+        String selection = new String();
 
-        //itemQty = largetQty[0];
+        selection = "Quantity";
+
+        String[] q2Arr = (inv.largestNum(selection));
+
+        System.out.println("product with the highest " + selection + " is : ");
+
+        System.out.println("Product : " + q2Arr[0]);
+        System.out.println(selection + " : " + q2Arr[1]);
 
         //Question 3
 
@@ -62,14 +70,9 @@ public class StockProgram {
 
             ArrayList lineInfo = new ArrayList(Arrays.asList(line.split(",")));
 
-            System.out.println("Printing Price of current Item");
-
-            System.out.println(lineInfo.get(3));
-
             //Check to see if line has a minimum of 5 elements
 
             if(lineInfo.size() < 5){
-
 
                 lineInfo.add(4, "");
 
@@ -91,16 +94,15 @@ public class StockProgram {
 
             //Construct new object
 
-            System.out.println("Creating new stockItem object");
-
             StockItem stockItem = new StockItem(name, code, qty, price, sp);
-
-            System.out.println("Adding new Item to inventory");
 
             //Add item to inventory
 
             inv.addItem(stockItem);
         }
+
+        System.out.println("All Items imported from inventory.txt");
+
     }
 
 }

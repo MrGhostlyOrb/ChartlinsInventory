@@ -18,8 +18,6 @@ public class Inventory {
 
         //Method for adding an Item to the inventory
 
-        System.out.println("Adding New Item");
-
         invStock.add(newItem);
 
         //Collections.sort()
@@ -47,7 +45,7 @@ public class Inventory {
 
         Map<String, Integer> happy = new HashMap();
 
-        System.out.println(invStock.size());
+        System.out.println(invStock.size() + " Items to sort by Price");
 
         for(int i = 0; i < invStock.size(); i++){
             StockItem item = invStock.get(i);
@@ -60,15 +58,9 @@ public class Inventory {
 
             int intItem = Integer.parseInt(trimStrItem);
 
-            System.out.println(item.getCode());
-
-            System.out.println(intItem);
-
             //Added product name and price to hashmap to be sorted
 
             happy.put(item.getCode(),intItem);
-
-            System.out.println(happy);
 
         }
 
@@ -76,8 +68,6 @@ public class Inventory {
                 .stream()
                 .sorted(Map.Entry.comparingByValue())
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
-
-        System.out.println(sorted);
 
         return sorted;
 
@@ -87,6 +77,56 @@ public class Inventory {
 
         //ArrayList<StockItem> sortedStock = stock.sort();
 
+    }
+
+    public String[] largestNum(String selection){
+
+        Map<String, Integer> unSorted = new HashMap();
+        String[] returnArray = new String[2];
+
+        for(int i = 0; i < invStock.size(); i++){
+            StockItem item = invStock.get(i);
+
+            //This if statement could be expanded to include other selections
+
+            if(selection == "Quantity"){
+                String strQty = item.getQty();
+
+                String trimStrItem = strQty.substring(1);
+
+                int intItem = Integer.parseInt(trimStrItem);
+
+                //Added product name and price to hashmap to be sorted
+
+                unSorted.put(item.getCode(),intItem);
+
+            }
+
+            Map<String, Integer> sorted = unSorted.entrySet()
+                    .stream()
+                    .sorted(Map.Entry.comparingByValue())
+                    .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
+
+            boolean count = false;
+            String returnKey = "";
+            int returnValue = 0;
+
+
+            while(count != true) {
+
+                for (Map.Entry<String, Integer> entry : sorted.entrySet()) {
+                    returnKey = entry.getKey();
+                    returnValue = entry.getValue();
+
+                    count = true;
+                }
+            }
+
+            returnArray[0] = returnKey;
+            returnArray[1] = Integer.toString(returnValue);
+
+            }
+        return returnArray;
     }
 
 }
