@@ -22,7 +22,7 @@ public class StockProgram {
 
         // Print a list of the inventory, sorted in order of increasing price.
 
-        inv.sortPriceHigh();
+        sortedMap = inv.sortPriceHigh();
 
         //Question 2
 

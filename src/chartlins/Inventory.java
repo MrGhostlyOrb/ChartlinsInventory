@@ -1,8 +1,6 @@
 package chartlins;
 
 import java.util.*;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.stream.Collectors;
 
 public class Inventory {
@@ -43,7 +41,7 @@ public class Inventory {
         return stockSize;
 
     }
-    public void sortPriceHigh(){
+    public Map<String, Integer> sortPriceHigh(){
 
         //Method for sorting the prices of the inventory by the highest price
 
@@ -80,6 +78,8 @@ public class Inventory {
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
 
         System.out.println(sorted);
+
+        return sorted;
 
         //happy.put(invStock.get(StockItem.getProduct()), invStock.get(2));
 
