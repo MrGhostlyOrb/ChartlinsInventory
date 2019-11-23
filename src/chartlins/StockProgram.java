@@ -15,6 +15,10 @@ public class StockProgram {
 
         //Question 1
 
+        System.out.println("----------");
+        System.out.println("Question 1");
+        System.out.println("----------");
+
         // Print a list of the inventory, sorted in order of increasing price.
 
         Map<String, Integer> sortedMap = new HashMap();
@@ -26,6 +30,10 @@ public class StockProgram {
         }
 
         //Question 2
+
+        System.out.println("----------");
+        System.out.println("Question 2");
+        System.out.println("----------");
 
         // What is the component with the largest number of components in stock
 
@@ -42,13 +50,35 @@ public class StockProgram {
 
         //Question 3
 
+        System.out.println("----------");
+        System.out.println("Question 3");
+        System.out.println("----------");
+
         // How many NPN transistors does Chartlins have in stock?
+
+        int q3Num = 0;
+
+        q3Num = inv.specialQty();
+
+        System.out.println("The number of NPN transistors in stock is : " + q3Num);
 
         //Question 4
 
+        System.out.println("----------");
+        System.out.println("Question 4");
+        System.out.println("----------");
+
         // What is the total resistance of all the resistors in stock?
 
+        int q4Num = 0;
+
+        q4Num = inv.totalRes();
+
         //Question 5
+
+        System.out.println("----------");
+        System.out.println("Question 5");
+        System.out.println("----------");
 
         // How many stock items have unit prices above 10p?
 

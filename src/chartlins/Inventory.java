@@ -129,4 +129,62 @@ public class Inventory {
         return returnArray;
     }
 
+    public int specialQty(){
+
+        ArrayList<String> NPNArray = new ArrayList<String>();
+        int NPNtotal = 0;
+
+
+        for(int i = 0; i < invStock.size(); i++){
+            StockItem item = invStock.get(i);
+
+                String strSp = item.getSpecial();
+
+                if(strSp.length() < 1){
+                    continue;
+                }
+
+                String trimStrItem = strSp.substring(1);
+
+                if(trimStrItem.equals("NPN")){
+
+                    String currItem = item.getQty();
+                    String trimCurrItem = currItem.substring(1);
+                    int currItemInt = Integer.parseInt(trimCurrItem);
+
+                    NPNtotal = NPNtotal + currItemInt;
+
+                }
+
+        }
+        return NPNtotal;
+    }
+
+    public int totalRes(){
+
+        int returnRes = 0;
+
+        for(int i = 0; i < invStock.size(); i++){
+            StockItem item = invStock.get(i);
+
+            String strName = item.getProduct();
+
+            if(strName.equals("resistor")){
+
+                String currItem = item.getSpecial();
+                String trimCurrItem = currItem.substring(1);
+
+                //TODO work out how maths numbers work in sci format
+
+                int currItemInt = Integer.parseInt(trimCurrItem);
+
+                returnRes = returnRes + currItemInt;
+
+            }
+
+        }
+
+        return returnRes;
+    }
+
 }
