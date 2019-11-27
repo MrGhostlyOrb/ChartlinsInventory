@@ -1,5 +1,6 @@
 package chartlins;
 
+import java.math.BigDecimal;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -89,7 +90,7 @@ public class Inventory {
 
             //This if statement could be expanded to include other selections
 
-            if(selection == "Quantity"){
+            if(selection == "quantity"){
                 String strQty = item.getQty();
 
                 String trimStrItem = strQty.substring(1);
@@ -160,9 +161,9 @@ public class Inventory {
         return NPNtotal;
     }
 
-    public int totalRes(){
+    public long totalRes(){
 
-        int returnRes = 0;
+        long returnRes = 0;
 
         for(int i = 0; i < invStock.size(); i++){
             StockItem item = invStock.get(i);
@@ -174,17 +175,41 @@ public class Inventory {
                 String currItem = item.getSpecial();
                 String trimCurrItem = currItem.substring(1);
 
-                //TODO work out how maths numbers work in sci format
+                BigDecimal bd = new BigDecimal(trimCurrItem);
+                long val = bd.longValue();
 
-                int currItemInt = Integer.parseInt(trimCurrItem);
-
-                returnRes = returnRes + currItemInt;
+                returnRes = returnRes + val;
 
             }
 
         }
 
         return returnRes;
+    }
+    public ArrayList<String> sortPrice(int price){
+
+        ArrayList<String> returnList = new ArrayList<String>();
+
+        for(int i = 0; i < invStock.size(); i++){
+            StockItem item = invStock.get(i);
+
+            String itemPrice = item.getPrice();
+
+            String itemPriceSub = itemPrice.substring(1);
+
+            int itemPriceInt = Integer.parseInt(itemPriceSub);
+
+            if(itemPriceInt > price){
+
+                String itemName = item.getCode();
+
+                returnList.add(itemName);
+
+            }
+        }
+
+        return returnList;
+
     }
 
 }

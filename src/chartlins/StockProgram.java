@@ -39,11 +39,11 @@ public class StockProgram {
 
         String selection = new String();
 
-        selection = "Quantity";
+        selection = "quantity";
 
         String[] q2Arr = (inv.largestNum(selection));
 
-        System.out.println("product with the highest " + selection + " is : ");
+        System.out.println("Product with the highest " + selection + " is : ");
 
         System.out.println("Product : " + q2Arr[0]);
         System.out.println(selection + " : " + q2Arr[1]);
@@ -70,9 +70,11 @@ public class StockProgram {
 
         // What is the total resistance of all the resistors in stock?
 
-        int q4Num = 0;
+        long q4Num = 0;
 
         q4Num = inv.totalRes();
+
+        System.out.println("The total resistance of all of the resistors in stock is : " + q4Num + " \u2126");
 
         //Question 5
 
@@ -82,7 +84,13 @@ public class StockProgram {
 
         // How many stock items have unit prices above 10p?
 
-        //Inventory.sortPrice(10);
+        ArrayList<String> q5List = new ArrayList<String>();
+
+        int price = 10;
+
+        q5List = inv.sortPrice(price);
+
+        System.out.println(q5List.size() + " Items have a price above " + price + " pence");
     }
 
     public static void parseFile(Inventory inv) throws FileNotFoundException {
