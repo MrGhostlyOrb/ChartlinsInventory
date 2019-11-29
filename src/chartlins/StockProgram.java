@@ -2,6 +2,8 @@ package chartlins;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.util.*;
 
 public class StockProgram {
@@ -21,7 +23,7 @@ public class StockProgram {
 
         // Print a list of the inventory, sorted in order of increasing price.
 
-        Map<String, Integer> sortedMap = new HashMap();
+        Map<String, Integer> sortedMap = new HashMap<>();
 
         sortedMap = inv.sortPriceHigh();
 
@@ -37,7 +39,7 @@ public class StockProgram {
 
         // What is the component with the largest number of components in stock
 
-        String selection = new String();
+        String selection;
 
         selection = "quantity";
 
@@ -70,11 +72,13 @@ public class StockProgram {
 
         // What is the total resistance of all the resistors in stock?
 
-        long q4Num = 0;
+        BigDecimal q4Num;
+
+        DecimalFormat df = new DecimalFormat("0.0000");
 
         q4Num = inv.totalRes();
 
-        System.out.println("The total resistance of all of the resistors in stock is : " + q4Num + " \u2126");
+        System.out.println("The total resistance of all of the resistors in stock is : " + df.format(q4Num) + " \u2126");
 
         //Question 5
 
@@ -93,7 +97,7 @@ public class StockProgram {
         System.out.println(q5List.size() + " Items have a price above " + price + " pence");
     }
 
-    public static void parseFile(Inventory inv) throws FileNotFoundException {
+    private static void parseFile(Inventory inv) throws FileNotFoundException {
 
         //Method for parsing inventory.txt and retrieving the data in an and adding all items to the inventory
 
@@ -106,7 +110,7 @@ public class StockProgram {
         while(scanner.hasNextLine()){
             String line = scanner.nextLine();
 
-            ArrayList lineInfo = new ArrayList(Arrays.asList(line.split(",")));
+            ArrayList<String> lineInfo = new ArrayList<>(Arrays.asList(line.split(",")));
 
             //Check to see if line has a minimum of 5 elements
 
@@ -120,15 +124,15 @@ public class StockProgram {
             //Assign elements of line to variables
 
             //Product Name [0]
-            String name = (String) lineInfo.get(0);
+            String name = lineInfo.get(0);
             //Product Code [1]
-            String code = (String) lineInfo.get(1);
+            String code = lineInfo.get(1);
             //Product Quantity [2]
-            String qty = (String) lineInfo.get(2);
+            String qty = lineInfo.get(2);
             //Product Price [3]
-            String price = (String) lineInfo.get(3);
+            String price = lineInfo.get(3);
             //Product Special Value [4]
-            String sp = (String) lineInfo.get(4);
+            String sp = lineInfo.get(4);
 
             //Construct new object
 

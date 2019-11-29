@@ -10,12 +10,12 @@ public class Inventory {
 
     private ArrayList<StockItem> invStock;
 
-    public Inventory(){
+    Inventory(){
         invStock = new ArrayList<StockItem>();
 
     }
 
-    public void addItem(StockItem newItem){
+    void addItem(StockItem newItem){
 
         //Method for adding an Item to the inventory
 
@@ -35,12 +35,10 @@ public class Inventory {
 
         System.out.println("Checking Size of Inventory");
 
-        int stockSize = invStock.size();
-
-        return stockSize;
+        return invStock.size();
 
     }
-    public Map<String, Integer> sortPriceHigh(){
+    Map<String, Integer> sortPriceHigh(){
 
         //Method for sorting the prices of the inventory by the highest price
 
@@ -48,9 +46,7 @@ public class Inventory {
 
         System.out.println(invStock.size() + " Items to sort by Price");
 
-        for(int i = 0; i < invStock.size(); i++){
-            StockItem item = invStock.get(i);
-
+        for (StockItem item : invStock) {
             //Turn price into int
 
             String strItem = item.getPrice();
@@ -61,7 +57,7 @@ public class Inventory {
 
             //Added product name and price to hashmap to be sorted
 
-            happy.put(item.getCode(),intItem);
+            happy.put(item.getCode(), intItem);
 
         }
 
@@ -80,17 +76,15 @@ public class Inventory {
 
     }
 
-    public String[] largestNum(String selection){
+    String[] largestNum(String selection){
 
         Map<String, Integer> unSorted = new HashMap();
         String[] returnArray = new String[2];
 
-        for(int i = 0; i < invStock.size(); i++){
-            StockItem item = invStock.get(i);
-
+        for (StockItem item : invStock) {
             //This if statement could be expanded to include other selections
 
-            if(selection == "quantity"){
+            if (selection.equals("quantity")) {
                 String strQty = item.getQty();
 
                 String trimStrItem = strQty.substring(1);
@@ -99,7 +93,7 @@ public class Inventory {
 
                 //Added product name and price to hashmap to be sorted
 
-                unSorted.put(item.getCode(),intItem);
+                unSorted.put(item.getCode(), intItem);
 
             }
 
@@ -113,7 +107,7 @@ public class Inventory {
             int returnValue = 0;
 
 
-            while(count != true) {
+            while (!count) {
 
                 for (Map.Entry<String, Integer> entry : sorted.entrySet()) {
                     returnKey = entry.getKey();
@@ -126,80 +120,85 @@ public class Inventory {
             returnArray[0] = returnKey;
             returnArray[1] = Integer.toString(returnValue);
 
-            }
+        }
         return returnArray;
     }
 
-    public int specialQty(){
+    int specialQty(){
 
         ArrayList<String> NPNArray = new ArrayList<String>();
         int NPNtotal = 0;
 
 
-        for(int i = 0; i < invStock.size(); i++){
-            StockItem item = invStock.get(i);
+        for (StockItem item : invStock) {
+            String strSp = item.getSpecial();
 
-                String strSp = item.getSpecial();
+            if (strSp.length() < 1) {
+                continue;
+            }
 
-                if(strSp.length() < 1){
-                    continue;
-                }
+            String trimStrItem = strSp.substring(1);
 
-                String trimStrItem = strSp.substring(1);
+            if (trimStrItem.equals("NPN")) {
 
-                if(trimStrItem.equals("NPN")){
+                String multi = item.getQty();
 
-                    String currItem = item.getQty();
-                    String trimCurrItem = currItem.substring(1);
-                    int currItemInt = Integer.parseInt(trimCurrItem);
+                String multiTrim = multi.substring(1);
 
-                    NPNtotal = NPNtotal + currItemInt;
+                int multiInt = Integer.parseInt(multiTrim);
 
-                }
+                NPNtotal = NPNtotal + multiInt;
+
+            }
 
         }
         return NPNtotal;
     }
 
-    public long totalRes(){
+    BigDecimal totalRes(){
 
-        long returnRes = 0;
+        double returnRes = 0;
 
-        for(int i = 0; i < invStock.size(); i++){
-            StockItem item = invStock.get(i);
-
+        for (StockItem item : invStock) {
             String strName = item.getProduct();
 
-            if(strName.equals("resistor")){
+            if (strName.equals("resistor")) {
+
+                String multi = item.getQty();
+
+                String multiTrim = multi.substring(1);
+
+                int multiInt = Integer.parseInt(multiTrim);
 
                 String currItem = item.getSpecial();
                 String trimCurrItem = currItem.substring(1);
 
                 BigDecimal bd = new BigDecimal(trimCurrItem);
-                long val = bd.longValue();
+                double val = bd.doubleValue();
 
-                returnRes = returnRes + val;
+                double multiVal = val * multiInt;
+
+
+                returnRes = returnRes + multiVal;
 
             }
 
         }
 
-        return returnRes;
+        return new BigDecimal(returnRes);
     }
-    public ArrayList<String> sortPrice(int price){
+    ArrayList<String> sortPrice(int price){
 
         ArrayList<String> returnList = new ArrayList<String>();
 
-        for(int i = 0; i < invStock.size(); i++){
-            StockItem item = invStock.get(i);
-
+        for (StockItem item : invStock) {
             String itemPrice = item.getPrice();
 
             String itemPriceSub = itemPrice.substring(1);
 
             int itemPriceInt = Integer.parseInt(itemPriceSub);
 
-            if(itemPriceInt > price){
+            if (itemPriceInt > price) {
 
                 String itemName = item.getCode();
 

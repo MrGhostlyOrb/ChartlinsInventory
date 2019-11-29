@@ -2,7 +2,7 @@ package chartlins;
 
 import java.util.Arrays;
 
-public class StockItem {
+class StockItem {
     //This class will be used to import the information from the inventory class and sort the information.
 
     //Fields
@@ -15,7 +15,7 @@ public class StockItem {
 
     //Constructor class to create item object
 
-    public StockItem(String productName, String productCode, String quantity, String itemPrice, String special){
+    StockItem(String productName, String productCode, String quantity, String itemPrice, String special){
 
         product = productName;
         code = productCode;
@@ -27,19 +27,19 @@ public class StockItem {
 
     //Methods to return object values
 
-    public String getProduct(){
+    String getProduct(){
         return product;
     }
-    public String getCode(){
+    String getCode(){
         return code;
     }
-    public String getQty(){
+    String getQty(){
         return qty;
     }
-    public String getPrice(){
+    String getPrice(){
         return price;
     }
-    public String getSpecial(){
+    String getSpecial(){
         return sp;
     }
 
