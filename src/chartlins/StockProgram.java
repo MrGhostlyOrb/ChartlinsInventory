@@ -23,7 +23,7 @@ public class StockProgram {
 
         // Print a list of the inventory, sorted in order of increasing price.
 
-        Map<String, Integer> sortedMap = new HashMap<>();
+        Map<String, Integer> sortedMap;
 
         sortedMap = inv.sortPriceHigh();
 
@@ -58,7 +58,7 @@ public class StockProgram {
 
         // How many NPN transistors does Chartlins have in stock?
 
-        int q3Num = 0;
+        int q3Num;
 
         q3Num = inv.specialQty();
 
@@ -79,6 +79,8 @@ public class StockProgram {
 
         q4Num = inv.totalRes();
 
+        //Should have a unicode ohms character at the end of this statement
+
         System.out.println("The total resistance of all of the resistors in stock is : " + df.format(q4Num) + " \u2126");
 
         //Question 5
@@ -89,7 +91,7 @@ public class StockProgram {
 
         // How many stock items have unit prices above 10p?
 
-        ArrayList<String> q5List = new ArrayList<String>();
+        ArrayList<String> q5List;
 
         int price = 10;
 

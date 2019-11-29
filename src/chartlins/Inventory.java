@@ -4,14 +4,14 @@ import java.math.BigDecimal;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class Inventory {
+class Inventory {
 
     //ArrayList for storing the entire inventory
 
     private ArrayList<StockItem> invStock;
 
     Inventory(){
-        invStock = new ArrayList<StockItem>();
+        invStock = new ArrayList<>();
 
     }
 
@@ -25,24 +25,11 @@ public class Inventory {
 
     }
 
-    public void setInvStock(ArrayList<StockItem> invStock) {
-        this.invStock = invStock;
-    }
-
-    public int numberOfItems(){
-
-        //Example method for checking the number of items currently in the inventory
-
-        System.out.println("Checking Size of Inventory");
-
-        return invStock.size();
-
-    }
     Map<String, Integer> sortPriceHigh(){
 
         //Method for sorting the prices of the inventory by the highest price
 
-        Map<String, Integer> happy = new HashMap();
+        Map<String, Integer> happy = new HashMap<>();
 
         System.out.println(invStock.size() + " Items to sort by Price");
 
@@ -61,24 +48,18 @@ public class Inventory {
 
         }
 
-        Map<String, Integer> sorted = happy.entrySet()
+        //This is ugly but Intelij made me do it for optimisation reasons.
+
+        return happy.entrySet()
                 .stream()
                 .sorted(Map.Entry.comparingByValue())
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
-
-        return sorted;
-
-        //happy.put(invStock.get(StockItem.getProduct()), invStock.get(2));
-
-        //ArrayList<StockItem> stock = invStock;
-
-        //ArrayList<StockItem> sortedStock = stock.sort();
 
     }
 
     String[] largestNum(String selection){
 
-        Map<String, Integer> unSorted = new HashMap();
+        Map<String, Integer> unSorted = new HashMap<>();
         String[] returnArray = new String[2];
 
         for (StockItem item : invStock) {
@@ -126,7 +107,6 @@ public class Inventory {
 
     int specialQty(){
 
-        ArrayList<String> NPNArray = new ArrayList<String>();
         int NPNtotal = 0;
 
 
@@ -189,7 +169,7 @@ public class Inventory {
     }
     ArrayList<String> sortPrice(int price){
 
-        ArrayList<String> returnList = new ArrayList<String>();
+        ArrayList<String> returnList = new ArrayList<>();
 
         for (StockItem item : invStock) {
             String itemPrice = item.getPrice();
