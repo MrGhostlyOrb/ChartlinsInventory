@@ -76,6 +76,7 @@ public class StockProgram {
 
         DecimalFormat df = new DecimalFormat("0.0000");
 
+
         q4Num = inv.totalRes();
 
         System.out.println("The total resistance of all of the resistors in stock is : " + df.format(q4Num) + " \u2126");
