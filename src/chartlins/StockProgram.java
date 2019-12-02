@@ -1,3 +1,11 @@
+/* *
+*
+*   100237847
+*   5/12/2019
+*   Program to parse file inventory.txt and answer 5 questions relating to the inventory.
+*
+* */
+
 package chartlins;
 
 import java.io.File;

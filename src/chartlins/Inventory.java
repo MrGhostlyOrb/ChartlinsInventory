@@ -48,9 +48,10 @@ class Inventory {
 
         }
 
-        //This is ugly but Intelij made me do it for optimisation reasons.
+        //I can also do a collections sort now as I have learnt this, however this was the first way I did it :)
 
         return happy.entrySet()
+                //This is ugly but Intelij made me do it for optimisation reasons.
                 .stream()
                 .sorted(Map.Entry.comparingByValue())
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
